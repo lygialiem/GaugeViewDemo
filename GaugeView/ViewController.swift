@@ -34,11 +34,6 @@ class ViewController: UIViewController {
       
         
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-       
-    }
 }
 
 
@@ -76,8 +71,9 @@ class InnerCircleLayer: CAShapeLayer {
         fillColor = UIColor.clear.cgColor
         strokeColor = UIColor.black.cgColor
         lineWidth = 1.0
+        let ratioInDesign = 134 / 364.0
         path = UIBezierPath(arcCenter: view.center,
-                            radius: view.frame.width * 134 / 364 / 2.0,
+                            radius: (view.frame.width * ratioInDesign) / 2.0,
                             startAngle: 0,
                             endAngle: 2 * CGFloat.pi,
                             clockwise: true).cgPath
@@ -111,6 +107,7 @@ class OuterCircleLayer : CAShapeLayer {
     }
 }
 
+// MARK: - MajorTickLayer
 class MajorTickLayer : CAShapeLayer {
     struct Settings {
         var minShowableValue: Float = 0.0
